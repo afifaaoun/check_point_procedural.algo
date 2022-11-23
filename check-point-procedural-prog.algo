@@ -1,0 +1,36 @@
+PROCEDURE dot_product( v1 , v2 : ARRAY_OF INTEGER[50])
+VAR
+    ps      : INTEGER;
+    i       : INTEGER;  
+BEGIN
+    ps     := 0;
+    FOR i FROM 1 TO v1.length STEP step  DO
+        ps = ps + v1[i] * v2[i];
+    END_FOR
+END
+
+ALGORITHM calc_n_vectors
+VAR
+    pairs   : INTEGER;
+    v1 , v2 : ARRAY_OF INTEGER[50];
+    i       : INTEGER;
+BEGIN
+    FOR i FROM 1 TO v1.length STEP step  DO
+        Write (v1[i]);
+        Read  (v1[i]);
+    END_FOR
+    FOR i FROM 1 TO v2.length STEP step  DO
+        Write (v2[i]);
+        Read  (v2[i]);
+    END_FOR
+    pairs = [v1,v2];
+    IF ((dot_product(v1, v2) = 0) AND ( v1.length = v2.length)) 
+        THEN
+        Write ( pairs , "are orthogonal");
+        ELSE
+        Write ( pairs , "are not orthogonal");
+    END_IF
+END
+
+// if dot_product was a function we just should put the return in the end of the function and specify the type of the return(integer)
+// the rest of the algorithm will not change
